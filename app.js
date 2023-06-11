@@ -43,11 +43,28 @@ configureListener('click');
 function mostrarMensaje(nombreEvento, elementoId){
   let terminal = document.getElementById('terminal');
   let mensajeAnterior = terminal.value;
-  let mensajeNuevo = '-El evento ' + nombreEvento + ' funciona correctamente'; 
-  let mensajeFinal = mensajeAnterior + '\n' + mensajeNuevo + '. Viene del elemento cuyo id es ' +  elementoId;
+  let horaActual = obtenerHora();
+  let mensajeNuevo = horaActual + ': ' + '-El evento ' + nombreEvento + ' funciona correctamente';
+  let mensajeFinal =  mensajeAnterior + '\n' + mensajeNuevo + '. Viene del elemento cuyo id es ' +  elementoId;
   terminal.value = mensajeFinal;
   terminal.scrollTop = terminal.scrollHeight;
 }
+
+function obtenerHora(){
+  // Obtén la fecha y hora actual
+  var fechaActual = new Date();
+
+  // Obtiene la hora formateada en el formato "HH:mm:ss.xyz"
+  var horaFormateada = fechaActual.toLocaleTimeString("es-ES", {
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    fractionalSecondDigits: 3
+  });
+
+  return horaFormateada;
+}
+
 
 /* Esta es la funcion que se encarga de agregar el "escuchador" de los eventos a nuestro input */
 function configureListener(nombreEvento, elementoId){
@@ -56,8 +73,6 @@ function configureListener(nombreEvento, elementoId){
     mostrarMensaje(nombreEvento, elementoId);
   })  
 }
-
-
 
 configureListener('dblclick', 'input');
 configureListener('dblclick', 'terminal');
