@@ -41,14 +41,12 @@ configureListener('click');
 
 
 function mostrarMensaje(nombreEvento, elementoId){
-  // let mensaje = '-El evento ' + nombreEvento + ' funciona correctamente';
-  // const texto = document.getElementById('terminal');
-  // texto.value = mensaje;
-  
-  let mensajeAnterior = document.getElementById('terminal').value;
+  let terminal = document.getElementById('terminal');
+  let mensajeAnterior = terminal.value;
   let mensajeNuevo = '-El evento ' + nombreEvento + ' funciona correctamente'; 
   let mensajeFinal = mensajeAnterior + '\n' + mensajeNuevo + '. Viene del elemento cuyo id es ' +  elementoId;
-  document.getElementById('terminal').value = mensajeFinal;
+  terminal.value = mensajeFinal;
+  terminal.scrollTop = terminal.scrollHeight;
 }
 
 /* Esta es la funcion que se encarga de agregar el "escuchador" de los eventos a nuestro input */
@@ -72,4 +70,5 @@ configureListener('mousedown', 'botonInicio');
 configureListener('mouseenter', 'titulo2');
 configureListener('mouseenter', 'eventosApli');
 configureListener('keydown', 'input');
+configureListener('keyup', 'input');
 configureListener('mouseenter', 'eventosApli');
