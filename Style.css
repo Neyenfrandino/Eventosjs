@@ -1,0 +1,89 @@
+body{
+    background-color: rgba(255, 150, 22, 0.6);
+}
+.tituloPag{
+    text-align: center;
+    background-color: black;
+    color: wheat;
+    margin: 20px;
+    border: solid none;
+    border-radius: 20px;
+    padding: 10px;
+}
+
+#eventosApli{
+    text-align: center;
+    border: solid black;
+    border-radius: 100px;
+    margin: 50px;
+}
+
+.eventoParrafo{
+    font-family: cursive;
+    font-size: 25px;
+    padding-bottom: 0px;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);;
+}
+
+.boton{
+    background-color: black;
+    border: none;
+    color: wheat;
+    margin: 20px;
+    padding: 30px;
+    border-radius: 30px;
+    cursor: pointer;
+   
+}
+.boton:hover{
+    color: aliceblue;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.6);
+}
+
+.titulo2{
+    text-decoration: underline;
+    text-align: center;
+}
+
+.textArea{
+    background-color: black;
+    color: wheat;
+}
+.form{
+    text-align: center;
+    margin: 30px;
+}
+
+.cajon{
+    height: 50px;
+    width: 50%;
+    border: none;
+    border-radius: 100px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: wheat;
+    font-family: cursive;
+    text-align: center;
+}
+.botoInput{
+    display: flex;
+    position: absolute;
+    right: 350px;
+    bottom: 90px;
+    border: none;
+    border-radius: 100px;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0) ;
+    font-family: cursive;
+    color: wheat;
+    cursor: pointer;
+}
+
+.botoInput:hover{
+    color: black;
+}
+
+
+/* <form action="" class="form" id="form">
+<input type="email" class="cajon" id="email-from">
+<input type="submit" class="botoInput" value="Suscribete">
+</form> */
