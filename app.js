@@ -1,54 +1,19 @@
-/* function imprimirMensaje(){
-    const texto = document.getElementById('txtMensaje').value;
-    console.log('El mensaje es: ' + texto);
+function registrarEvento(nombreEvento, elementoId){
+  let mensaje = '-El evento ' + nombreEvento + ' funciona correctamente. Viene del elemento cuyo id es ' +  elementoId;;
+  mostrarMensaje(mensaje)
 }
 
-function escribirMensaje(mensaje){
-    document.getElementById('txtMensaje').value = mensaje;
-} */
-
-
-/* const pruebaOnclick = document.getElementById('eventosApli')
-
-function mostrarMensaje(nombreEvento){
-  let mensaje = '-El evento ' + nombreEvento + ' funciona correctamente';
-  const texto = document.getElementById('terminal');
-  texto.value = mensaje;
-}
- */
-/* Esta es la funcion que se encarga de agregar el "escuchador" de los eventos a nuestro input */
-/* function configureListener(nombreEvento, ){
-  const input = document.getElementById('botonInicio');
-  input.addEventListener(nombreEvento, function(){
-    mostrarMensaje(nombreEvento);
-  })  
-} */
-
-/* configureListener('contextmenu');
-configureListener('click');
- */
-
-// const input = document.getElementById('botonInicio');
-// input.addEventListener('contextmenu', function(){
-//   mostrarMensaje('contextmenu');
-// })
-
-// const elemento = document.getElementById('botonInicio');
-// elemento.addEventListener('click', function(){
-//   mostrarMensaje('CLICK');
-// });
-
-
-
-function mostrarMensaje(nombreEvento, elementoId){
+function mostrarMensaje(mensaje){
   let terminal = document.getElementById('terminal');
-  let mensajeAnterior = terminal.value;
   let horaActual = obtenerHora();
-  let mensajeNuevo = horaActual + ': ' + '-El evento ' + nombreEvento + ' funciona correctamente';
-  let mensajeFinal =  mensajeAnterior + '\n' + mensajeNuevo + '. Viene del elemento cuyo id es ' +  elementoId;
+  let mensajeAnterior = terminal.value
+  let mensajeFinal = mensajeAnterior + '\n' + horaActual + ': ' +  mensaje;
   terminal.value = mensajeFinal;
   terminal.scrollTop = terminal.scrollHeight;
 }
+
+
+
 
 function obtenerHora(){
   // Obtén la fecha y hora actual
@@ -70,7 +35,7 @@ function obtenerHora(){
 function configureListener(nombreEvento, elementoId){
   const input = document.getElementById(elementoId);
   input.addEventListener(nombreEvento, function(){
-    mostrarMensaje(nombreEvento, elementoId);
+    registrarEvento(nombreEvento, elementoId);
   })  
 }
 
@@ -81,9 +46,9 @@ function setClickEnviar(){
     let email = document.getElementById('email-from').value
     let correoValido = validarCorreo(email);
     if (correoValido == true){
-      console.log('Es un correo valido ' + email);
+      mostrarMensaje('Es un correo valido ' + email);
     } else {
-      console.log(email + ' No es un correo');
+      mostrarMensaje(email + ' No es un correo');
     }
   })
 }
