@@ -74,6 +74,27 @@ function configureListener(nombreEvento, elementoId){
   })  
 }
 
+
+function setClickEnviar(){
+  let btnEnviar = document.getElementById('enviar');
+  btnEnviar.addEventListener('click', function(){
+    let email = document.getElementById('email-from').value
+    let correoValido = validarCorreo(email);
+    if (correoValido == true){
+      console.log('Es un correo valido ' + email);
+    } else {
+      console.log(email + ' No es un correo');
+    }
+  })
+}
+
+function validarCorreo(email){
+  const expresionRegular = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+  const esValido = expresionRegular.test(email);
+  return esValido;
+}
+
+
 configureListener('dblclick', 'input');
 configureListener('dblclick', 'terminal');
 configureListener('contextmenu', 'input')
@@ -87,3 +108,4 @@ configureListener('mouseenter', 'eventosApli');
 configureListener('keydown', 'input');
 configureListener('keyup', 'input');
 configureListener('mouseenter', 'eventosApli');
+setClickEnviar();
