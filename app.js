@@ -12,9 +12,6 @@ function mostrarMensaje(mensaje){
   terminal.scrollTop = terminal.scrollHeight;
 }
 
-
-
-
 function obtenerHora(){
   // Obtén la fecha y hora actual
   var fechaActual = new Date();
@@ -30,7 +27,6 @@ function obtenerHora(){
   return horaFormateada;
 }
 
-
 /* Esta es la funcion que se encarga de agregar el "escuchador" de los eventos a nuestro input */
 function configureListener(nombreEvento, elementoId){
   const input = document.getElementById(elementoId);
@@ -39,16 +35,19 @@ function configureListener(nombreEvento, elementoId){
   })  
 }
 
-
 function setClickEnviar(){
   let btnEnviar = document.getElementById('enviar');
   btnEnviar.addEventListener('click', function(){
     let email = document.getElementById('email-from').value
     let correoValido = validarCorreo(email);
+    let terminal = document.getElementById('terminal');
+
     if (correoValido == true){
-      mostrarMensaje('Es un correo valido ' + email);
+      mostrarMensaje('-Es un correo valido ' + email);
+      terminal.classList.remove('correoInvalido') 
     } else {
-      mostrarMensaje(email + ' No es un correo');
+      mostrarMensaje('-'+email + ' ! No es un correo ¡');
+      terminal.classList.add('correoInvalido') 
     }
   })
 }
@@ -57,6 +56,15 @@ function validarCorreo(email){
   const expresionRegular = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
   const esValido = expresionRegular.test(email);
   return esValido;
+}
+
+function limpiarTerminal(){
+  console.log('funciona')
+  let miTerminal = document.getElementById('terminal');
+  miTerminal.value = null
+}
+function tiempoOfflimpiar(){
+  setInterval(limpiarTerminal, 1000 * 5);
 }
 
 
@@ -74,3 +82,4 @@ configureListener('keydown', 'input');
 configureListener('keyup', 'input');
 configureListener('mouseenter', 'eventosApli');
 setClickEnviar();
+tiempoOfflimpiar();

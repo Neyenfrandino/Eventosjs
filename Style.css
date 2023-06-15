@@ -82,6 +82,10 @@ body{
     color: black;
 }
 
+.correoInvalido{
+    background-color: red;
+}
+
 
 /* <form action="" class="form" id="form">
 <input type="email" class="cajon" id="email-from">
