@@ -60,17 +60,26 @@ function validarCorreo(email){
 
 function limpiarTerminal(){
   let miTerminal = document.getElementById('terminal');
-  miTerminal.value = null
+  miTerminal.value = null;
+  alertaLimpiarTerminal();
 }
 
 let timer;
 function resetTimer() {
   clearTimeout(timer); // Limpiamos el temporizador existente
-  timer = setTimeout(limpiarTerminal, 2000); // Establecemos un nuevo temporizador
+  timer = setTimeout(limpiarTerminal, 1000 * 3); // Establecemos un nuevo temporizador
+  
 }
 
 window.addEventListener('mousemove', resetTimer);
 window.addEventListener('keydown', resetTimer )
+
+
+function alertaLimpiarTerminal(){
+  let alertaTiempo = document.getElementById('audioAlarma');
+  alertaTiempo.play();
+}
+
 
 
 
@@ -89,3 +98,4 @@ configureListener('keydown', 'input');
 configureListener('keyup', 'input');
 configureListener('mouseenter', 'eventosApli');
 setClickEnviar();
+resetTimer()
