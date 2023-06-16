@@ -59,13 +59,20 @@ function validarCorreo(email){
 }
 
 function limpiarTerminal(){
-  console.log('funciona')
   let miTerminal = document.getElementById('terminal');
   miTerminal.value = null
 }
-function tiempoOfflimpiar(){
-  setInterval(limpiarTerminal, 1000 * 5);
+
+let timer;
+function resetTimer() {
+  clearTimeout(timer); // Limpiamos el temporizador existente
+  timer = setTimeout(limpiarTerminal, 2000); // Establecemos un nuevo temporizador
 }
+
+window.addEventListener('mousemove', resetTimer);
+window.addEventListener('keydown', resetTimer )
+
+
 
 
 configureListener('dblclick', 'input');
@@ -82,4 +89,3 @@ configureListener('keydown', 'input');
 configureListener('keyup', 'input');
 configureListener('mouseenter', 'eventosApli');
 setClickEnviar();
-tiempoOfflimpiar();
